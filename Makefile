@@ -1,11 +1,11 @@
-#!/usr/bin/make
+CFLAGS = -Wall -O2 -g
 
 .PHONY: libmigdb
 
 all: libmigdb
 
 libmigdb:
-	$(MAKE) -C src
+	$(MAKE) -C src CFLAGS="$(CFLAGS)"
 
 clean:
 	$(MAKE) -C src clean
@@ -14,4 +14,3 @@ clean:
 
 install:
 	$(MAKE) -C src install
-

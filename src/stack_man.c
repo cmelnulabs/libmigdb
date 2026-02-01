@@ -56,7 +56,7 @@ void mi_stack_list_arguments(mi_h *h, int show, int from, int to)
 
 void mi_stack_info_frame(mi_h *h)
 {
- mi_send(h,"frame\n");
+ mi_send(h,"-stack-info-frame\n");
 }
 
 void mi_stack_info_depth(mi_h *h, int depth)
