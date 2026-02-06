@@ -1457,7 +1457,7 @@ const char *mi_reason_enum_to_str(enum mi_stop_reason r)
 
  if (r==sr_unknown)
     return "Unknown (temp bkp?)";
- for (i=0; i<sizeof(reason_values)/sizeof(char *); i++)
+ for (i=0; i<sizeof(reason_values)/sizeof(enum mi_stop_reason); i++)
      if (reason_values[i]==r)
         return reason_expl[i];
  return NULL;

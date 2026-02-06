@@ -114,7 +114,9 @@ int mi_look_for_free_vt()
   * start with, we'll be able to do this now.  Otherwise, we'll just
   * ignore the error returned since it might not be a problem if the
   * ttys we look at are owned by the user running the program. */
- seteuid(0);
+ if (seteuid(0) == -1) {
+    /* Intentionally ignore - may not be needed */
+ }
 
  /* tty0 is not really a console, so start counting at 2. */
  fd=-1;
@@ -130,12 +132,9 @@ int mi_look_for_free_vt()
           }
        }
 
- seteuid(getuid());
-
- if (!mask)
-    return -3;
-
- return tty;
+ if (seteuid(getuid()) == -1) {
+    /* Intentionally ignore - restoring original uid */
+ }
 }
 
 /**[txh]********************************************************************
@@ -159,7 +158,10 @@ mi_aux_term *gmi_look_for_free_vt()
  if (!res)
     return NULL;
  res->pid=-1;
- asprintf(&res->tty,"/dev/tty%d",vt);
+ if (asprintf(&res->tty,"/dev/tty%d",vt) == -1) {
+    free(res);
+    return NULL;
+ }
  return res;
 }
 
