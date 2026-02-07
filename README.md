@@ -86,6 +86,10 @@ This project is licensed under the **GNU General Public License v2.0 (GPLv2)**.
 
 See [LICENSE](LICENSE) for full details.
 
+## Author
+
+**Salvador E. Tropea** - Original creator and maintainer
+
 ## Contributing
 
 Contributions are welcome! Please:
